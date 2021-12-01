@@ -28,7 +28,7 @@ public class App
         //2)
         counter = 0;
         for(int i = 1; i < result.size()-3; i++){
-            if((result.get(i) + result.get(i+1) + result.get(i+2)) < (result.get(i+1) + result.get(i+2) + result.get(i+3))){
+            if(result.get(i) < result.get(i+3)){
                 counter++;
             }
         }
