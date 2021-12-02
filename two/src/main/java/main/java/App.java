@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Hello world!
@@ -14,13 +15,9 @@ public class App
 {
     public static void main( String[] args ) throws IOException {
 
-        List<String> input = Files.readAllLines(Paths.get("src/main/resources/input.txt"));
-        ArrayList<CourseData> courseDataList = new ArrayList<>();
-
-        for (String s : input) {
-            String[] splittedString = s.split("\\s+");
-            courseDataList.add(new CourseData(splittedString[0], Integer.parseInt(splittedString[1])));
-        }
+        List<CourseData> courseDataList = Files.readAllLines(Paths.get("src/main/resources/input.txt")).stream()
+                .map(line -> line.split("\\s+"))
+                .map(arrayLine -> new CourseData(arrayLine[0], Integer.parseInt(arrayLine[1]))).collect(Collectors.toList());
 
         // 1)
         int depth = 0;
