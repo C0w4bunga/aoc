@@ -1,9 +1,7 @@
 package main.java;
 
-
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,10 +14,10 @@ public class App
 {
     public static void main( String[] args ) throws IOException {
 
-        List<String> result = Files.readAllLines(Paths.get("src/main/resources/input.txt"));
+        List<String> input = Files.readAllLines(Paths.get("src/main/resources/input.txt"));
         ArrayList<CourseData> courseDataList = new ArrayList<>();
 
-        for (String s : result) {
+        for (String s : input) {
             String[] splittedString = s.split("\\s+");
             courseDataList.add(new CourseData(splittedString[0], Integer.parseInt(splittedString[1])));
         }
